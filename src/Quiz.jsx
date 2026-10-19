@@ -61,13 +61,13 @@ export default function Quiz({ onBack, onReplay }) {
     0,
   )
   const scoreCaption =
-    score === 0
-      ? "You don't love me 💔"
-      : score < 3
+    score <= 4
+      ? "Damn, you really don't love me"
+      : score <= 6
         ? 'Do you really love me?'
-        : score < 5
-          ? 'You should know us better'
-          : 'you really love me!'
+        : score <= 9
+          ? 'You should know be better'
+          : 'you really love me'
 
   return (
     <div className="quiz-root">

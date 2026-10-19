@@ -23,7 +23,7 @@ export const config = {
   captions: [
     'Our first date',
     'Being silly',
-    'Cuddle time',
+    'Adventure time!',
     'Our happy place',
     'You make me smile',
     'Forever to go',
@@ -69,6 +69,49 @@ export const config = {
         { label: 'Vertice North', correct: true },
         { label: 'BGC', correct: false },
         { label: 'Binondo', correct: false },
+      ],
+    },
+    {
+      prompt: 'Where did I first live in Bayombong?',
+      choices: [
+        
+        { label: 'Ponce Kulukol', correct: false },
+        { label: 'Ponce Gym', correct: true },
+        { label: 'CICM', correct: false },
+      ],
+    },
+    {
+      prompt: 'When did you first visit me in Manila?',
+      choices: [
+        
+        { label: 'February 22, 2026', correct: false },
+        { label: 'February 23, 2026', correct: false },
+        { label: 'February 21, 2026', correct: true },
+      ],
+    },
+    {
+      prompt: 'Who was my 2nd Genshin 5 Star?',
+      choices: [
+        { label: 'Keqing', correct: true },
+        { label: 'Diluc', correct: false },
+        { label: 'Mona', correct: false },
+      ],
+    },
+    {
+      prompt: 'What did we do on October 20, 2025?',
+      choices: [
+        { label: 'Daate at Thirteean', correct: true },
+        { label: 'Stayed home', correct: false },
+        { label: 'Date at Sizzle', correct: false },
+      ],
+    },
+    {
+      prompt: 'Who is my favorite Stranger Things character?',
+      choices: [
+        
+        { label: 'Steve', correct: false },
+        { label: 'Dustin', correct: true },
+        { label: 'Eleven', correct: false },
       ],
     },
   ],
