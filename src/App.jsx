@@ -5,6 +5,7 @@ import Background from './Background.jsx'
 import Intro from './Intro.jsx'
 import MonthsaryWindow from './MonthsaryWindow.jsx'
 import Gallery from './Gallery.jsx'
+import Quiz from './Quiz.jsx'
 import { config } from './config.js'
 
 function getSpotifyEmbedUrl(value) {
@@ -166,7 +167,7 @@ function SpotifyPlayer() {
 }
 
 function Stage() {
-  const [stage, setStage] = useState('intro') // intro | window | gallery
+  const [stage, setStage] = useState('intro') // intro | window | gallery | quiz
   const [run, setRun] = useState(0)
   const [hasShot, setHasShot] = useState(false)
   const fx = useFX()
@@ -212,6 +213,25 @@ function Stage() {
             transition={{ duration: 0.5 }}
           >
             <Gallery
+              onQuiz={() => setStage('quiz')}
+              onReplay={() => {
+                setRun((r) => r + 1)
+                setStage('intro')
+              }}
+            />
+          </motion.div>
+        )}
+
+        {stage === 'quiz' && (
+          <motion.div
+            key="quiz"
+            className="screen"
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Quiz
+              onBack={() => setStage('gallery')}
               onReplay={() => {
                 setRun((r) => r + 1)
                 setStage('intro')

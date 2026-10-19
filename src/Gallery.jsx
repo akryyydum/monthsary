@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Character, Couple } from './Characters.jsx'
 import { config } from './config.js'
+import Quiz from './Quiz.jsx'
 
 const modules = import.meta.glob('./photos/*.{jpg,jpeg,png,webp,gif,JPG,JPEG,PNG,WEBP}', {
   eager: true,
@@ -95,7 +96,7 @@ function Lightbox({ index, onChange, onClose }) {
   )
 }
 
-export default function Gallery({ onReplay }) {
+export default function Gallery({ onQuiz, onReplay }) {
   const [open, setOpen] = useState(null)
 
   return (
@@ -147,9 +148,14 @@ export default function Gallery({ onReplay }) {
           <p>{config.closingNote}</p>
         </motion.section>
 
-        <button className="btn btn-replay" onClick={onReplay}>
-          {config.replayLabel}
-        </button>
+        <div className="gallery-actions">
+          <button className="btn btn-quiz" onClick={onQuiz}>
+            Take the quiz 💗
+          </button>
+          <button className="btn btn-replay" onClick={onReplay}>
+            {config.replayLabel}
+          </button>
+        </div>
       </div>
 
       <AnimatePresence>
