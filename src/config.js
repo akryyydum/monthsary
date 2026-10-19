@@ -64,7 +64,7 @@ export const config = {
       ],
     },
     {
-      prompt: 'Where did we go on your birthday back in March 20, 2026 at around 6:00pm?',
+      prompt: 'Where did we go on your monthsary back in March 20, 2026 at around 6:00pm?',
       choices: [
         { label: 'Vertice North', correct: true },
         { label: 'BGC', correct: false },
