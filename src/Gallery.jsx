@@ -10,7 +10,7 @@ const modules = import.meta.glob('./photos/*.{jpg,jpeg,png,webp,gif,JPG,JPEG,PNG
   import: 'default',
 })
 const realPhotos = Object.keys(modules)
-  .filter((k) => !Object.values(config.characterGifs).includes(k))
+  .filter((k) => !Object.values(config.characterGifs).includes(k) && !k.endsWith('/quiz-loading.gif'))
   .sort()
   .map((k) => modules[k])
 

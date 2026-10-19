@@ -60,6 +60,14 @@ export default function Quiz({ onBack, onReplay }) {
     (total, choiceIndex, index) => total + (questions[index].choices[choiceIndex]?.correct ? 1 : 0),
     0,
   )
+  const scoreCaption =
+    score === 0
+      ? "You don't love me 💔"
+      : score < 3
+        ? 'Do you really love me?'
+        : score < 5
+          ? 'You should know us better'
+          : 'you really love me!'
 
   return (
     <div className="quiz-root">
@@ -148,7 +156,7 @@ export default function Quiz({ onBack, onReplay }) {
           transition={{ type: 'spring', stiffness: 180, damping: 13 }}
         >
           <span className="quiz-score">{score} / {questions.length}</span>
-          <p>{score === questions.length ? 'Perfect score! You really are my person 🥰' : 'Every answer is better with you beside me 💞'}</p>
+          <p>{scoreCaption}</p>
           <div className="quiz-review">
             {questions.map((item, index) => {
               const selectedAnswer = item.choices[answers[index]]
