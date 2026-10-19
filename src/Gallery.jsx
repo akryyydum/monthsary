@@ -20,8 +20,19 @@ const slides = realPhotos.length
 
 const TILTS = [-4, 3, -2, 4, -3, 2]
 
-function Picture({ slide }) {
-  if (slide.src) return <img src={slide.src} alt={slide.caption || 'us'} loading="lazy" draggable="false" />
+function Picture({ slide, loading = 'lazy' }) {
+  if (slide.src) {
+    return (
+      <img
+        src={slide.src}
+        alt={slide.caption || 'us'}
+        loading={loading}
+        decoding="async"
+        sizes="(max-width: 480px) 42vw, 200px"
+        draggable="false"
+      />
+    )
+  }
   return (
     <div className="ph-empty">
       <Character kind={slide.kind} />
@@ -74,7 +85,7 @@ function Lightbox({ index, onChange, onClose }) {
           onClick={(e) => e.stopPropagation()}
         >
           <div className="lb-photo">
-            <Picture slide={s} />
+            <Picture slide={s} loading="eager" />
           </div>
           <figcaption>{s.caption || '💗'}</figcaption>
         </motion.figure>
