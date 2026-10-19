@@ -42,9 +42,21 @@ function SpotifyPlayer() {
   const [position, setPosition] = useState(null)
   const [dragging, setDragging] = useState(false)
   const [returning, setReturning] = useState(false)
+  const [entering, setEntering] = useState(false)
+  const [loaded, setLoaded] = useState(false)
   const playerRef = useRef(null)
   const dragOffset = useRef({ x: 0, y: 0 })
   const returnTimer = useRef(null)
+  const entranceTimer = useRef(null)
+  useEffect(() => {
+    if (!loaded) return undefined
+
+    setEntering(true)
+    entranceTimer.current = window.setTimeout(() => setEntering(false), 650)
+    return () => {
+      window.clearTimeout(entranceTimer.current)
+    }
+  }, [loaded])
   useEffect(() => () => window.clearTimeout(returnTimer.current), [])
 
   const spotifyEmbedUrl = getSpotifyEmbedUrl(config.spotifyEmbedUrl)
@@ -124,7 +136,7 @@ function SpotifyPlayer() {
   return (
     <div
       ref={playerRef}
-      className={`spotify-player${dragging ? ' is-dragging' : ''}${returning ? ' is-returning' : ''}`}
+      className={`spotify-player${loaded ? '' : ' is-loading'}${entering ? ' is-entering' : ''}${dragging ? ' is-dragging' : ''}${returning ? ' is-returning' : ''}`}
       style={position ? { left: position.left, top: position.top, bottom: 'auto', transform: 'none' } : undefined}
       onPointerMove={movePlayer}
       onPointerUp={finishDrag}
@@ -146,6 +158,8 @@ function SpotifyPlayer() {
         title="Spotify music player"
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
         loading="lazy"
+        onLoad={() => setLoaded(true)}
+        onError={() => console.error('Spotify player failed to load')}
       />
     </div>
   )
