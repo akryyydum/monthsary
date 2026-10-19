@@ -21,7 +21,7 @@ function ArrowSVG() {
   )
 }
 
-export default function Intro({ onDone }) {
+export default function Intro({ onDone, onShot }) {
   const [phase, setPhase] = useState('idle') // idle | shooting | hit | opening
   const envRef = useRef(null)
   const arrowRef = useRef(null)
@@ -48,6 +48,7 @@ export default function Intro({ onDone }) {
     })
 
     setPhase('hit')
+    onShot?.()
     fx.burst(cx, cy, { count: 18, spread: 150 })
     await sleep(800)
 

@@ -7,6 +7,8 @@ export const config = {
   },
   introTitle: "You've got mail",
   tapHint: 'Tap to shoot the arrow',
+  // Paste a Spotify track URL or embed URL here.
+  spotifyEmbedUrl: 'https://open.spotify.com/embed/track/5PjdC2gMATetx5xdnwGUu7',
 
   title: 'Happy Monthsary!',
   subtitle: 'Another month of loving you 💕',
