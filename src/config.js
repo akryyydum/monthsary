@@ -100,9 +100,9 @@ export const config = {
     {
       prompt: 'What did we do on October 20, 2025?',
       choices: [
-        { label: 'Daate at Thirteean', correct: true },
+        { label: 'Daate at Thirteean', correct: false },
         { label: 'Stayed home', correct: false },
-        { label: 'Date at Sizzle', correct: false },
+        { label: 'Date at Sizzle', correct: true },
       ],
     },
     {
